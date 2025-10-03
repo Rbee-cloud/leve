@@ -1,0 +1,60 @@
+/* -------------------------------------- */
+/* Header and Navigation Styling */
+/* -------------------------------------- */
+#main-header {
+    background: #ffffff;
+    padding: 15px 50px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+    
+    /* Use Flexbox to align items horizontally */
+    display: flex;
+    justify-content: space-between; /* Pushes items to the ends */
+    align-items: center; 
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900; 
+    color: #141f23; /* Dark color for logo */
+}
+
+#main-nav {
+    flex-grow: 1; /* Allows the nav to take up available space */
+    display: flex;
+    justify-content: flex-end; /* Pushes the links to the right */
+    margin-right: 40px; 
+}
+
+#main-nav ul {
+    display: flex;
+    align-items: center;
+}
+
+#main-nav li {
+    margin-left: 30px; 
+}
+
+#main-nav a {
+    font-weight: 500;
+    color: #141f23; 
+    transition: opacity 0.3s ease;
+}
+
+#main-nav a:hover {
+    opacity: 0.7; 
+}
+
+/* Call-to-Action Button Styling */
+.cta-button {
+    background-color: #ff6b47; /* Orange color */
+    color: #ffffff; 
+    padding: 12px 25px; 
+    border-radius: 50px; /* Pill shape */
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #e55a3a; /* Darker orange on hover */
+}
