@@ -1,15 +1,51 @@
 /* -------------------------------------- */
-/* Header and Navigation Styling */
+/* 1. Basic Reset and Global Styles */
+/* -------------------------------------- */
+* {
+    /* Simple CSS reset to remove default padding and margin */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif; /* A clean, readable font */
+    line-height: 1.6;
+    color: #333; /* Dark gray for text */
+    background-color: #f4f4f9; /* Light background */
+    
+    /* PUSH DOWN CONTENT: Accounts for the fixed header height (approx 80px) */
+    padding-top: 80px; 
+}
+
+a {
+    text-decoration: none; /* Remove underlines from links */
+    color: inherit;
+}
+
+ul {
+    list-style: none; /* Remove bullet points from lists */
+}
+
+/* -------------------------------------- */
+/* 2. Header and Navigation Styling */
 /* -------------------------------------- */
 #main-header {
     background: #ffffff;
     padding: 15px 50px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
     
-    /* Use Flexbox to align items horizontally */
+    /* FLEXBOX: Align logo, nav, and button */
     display: flex;
-    justify-content: space-between; /* Pushes items to the ends */
+    justify-content: space-between; 
     align-items: center; 
+    
+    /* FIXING THE HEADER TO THE TOP */
+    position: fixed; 
+    top: 0;          
+    left: 0;         
+    width: 100%;     
+    z-index: 1000;   /* Keeps the header above all other content */
 }
 
 .logo {
