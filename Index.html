@@ -1,0 +1,892 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Leve - Building Generations, Building Resilience</title>\
+    <style>\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+        \}\
+\
+        :root \{\
+            --primary-blue: #0066FF;\
+            --primary-orange: #FF6B35;\
+            --primary-purple: #6B4CE6;\
+            --accent-cyan: #00D9FF;\
+            --dark: #0A0A0A;\
+            --light: #FAFAFA;\
+            --gray: #666666;\
+        \}\
+\
+        body \{\
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;\
+            line-height: 1.6;\
+            color: var(--dark);\
+            background: var(--light);\
+            overflow-x: hidden;\
+        \}\
+\
+        .container \{\
+            max-width: 1400px;\
+            margin: 0 auto;\
+            padding: 0 40px;\
+        \}\
+\
+        /* Navigation */\
+        nav \{\
+            position: fixed;\
+            top: 0;\
+            width: 100%;\
+            background: rgba(250, 250, 250, 0.8);\
+            backdrop-filter: blur(20px);\
+            z-index: 1000;\
+            border-bottom: 1px solid rgba(0,0,0,0.05);\
+        \}\
+\
+        nav .container \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            padding: 2rem 40px;\
+        \}\
+\
+        .logo \{\
+            font-size: 1.5rem;\
+            font-weight: 700;\
+            color: var(--dark);\
+            letter-spacing: -1px;\
+        \}\
+\
+        .nav-links \{\
+            display: flex;\
+            list-style: none;\
+            gap: 3rem;\
+            align-items: center;\
+        \}\
+\
+        .nav-links a \{\
+            text-decoration: none;\
+            color: var(--dark);\
+            font-weight: 500;\
+            font-size: 0.95rem;\
+            transition: color 0.3s ease;\
+        \}\
+\
+        .nav-links a:hover \{\
+            color: var(--primary-blue);\
+        \}\
+\
+        /* Hero Section */\
+        .hero \{\
+            margin-top: 100px;\
+            min-height: 95vh;\
+            display: flex;\
+            align-items: center;\
+            position: relative;\
+            padding: 4rem 0;\
+        \}\
+\
+        .hero-content \{\
+            max-width: 1200px;\
+        \}\
+\
+        .hero h1 \{\
+            font-size: clamp(4rem, 12vw, 10rem);\
+            font-weight: 800;\
+            line-height: 0.95;\
+            letter-spacing: -0.03em;\
+            margin-bottom: 2rem;\
+            color: var(--dark);\
+        \}\
+\
+        .hero h1 .gradient-text \{\
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple), var(--primary-orange));\
+            -webkit-background-clip: text;\
+            -webkit-text-fill-color: transparent;\
+            background-clip: text;\
+            display: inline-block;\
+        \}\
+\
+        .hero-subtitle \{\
+            font-size: clamp(1.5rem, 3vw, 2.5rem);\
+            font-weight: 600;\
+            margin-bottom: 1rem;\
+            color: var(--dark);\
+            letter-spacing: -0.02em;\
+        \}\
+\
+        .hero-description \{\
+            font-size: clamp(1rem, 1.5vw, 1.3rem);\
+            max-width: 800px;\
+            margin: 2rem 0;\
+            color: var(--gray);\
+            line-height: 1.7;\
+        \}\
+\
+        .cta-group \{\
+            display: flex;\
+            gap: 1.5rem;\
+            margin-top: 3rem;\
+            flex-wrap: wrap;\
+        \}\
+\
+        .cta-button \{\
+            padding: 1.2rem 3rem;\
+            background: var(--dark);\
+            color: white;\
+            text-decoration: none;\
+            border-radius: 100px;\
+            font-weight: 600;\
+            font-size: 1.1rem;\
+            transition: all 0.3s ease;\
+            display: inline-block;\
+        \}\
+\
+        .cta-button:hover \{\
+            transform: scale(1.05);\
+            background: var(--primary-blue);\
+        \}\
+\
+        .cta-button.secondary \{\
+            background: transparent;\
+            color: var(--dark);\
+            border: 2px solid var(--dark);\
+        \}\
+\
+        .cta-button.secondary:hover \{\
+            background: var(--dark);\
+            color: white;\
+        \}\
+\
+        /* Marquee */\
+        .marquee \{\
+            padding: 3rem 0;\
+            background: var(--dark);\
+            color: white;\
+            overflow: hidden;\
+            white-space: nowrap;\
+        \}\
+\
+        .marquee-content \{\
+            display: inline-block;\
+            animation: scroll 30s linear infinite;\
+            font-size: 1.5rem;\
+            font-weight: 700;\
+            letter-spacing: -0.02em;\
+        \}\
+\
+        .marquee-content span \{\
+            padding: 0 3rem;\
+        \}\
+\
+        @keyframes scroll \{\
+            0% \{ transform: translateX(0); \}\
+            100% \{ transform: translateX(-50%); \}\
+        \}\
+\
+        /* Projects Section */\
+        .projects \{\
+            padding: 8rem 0;\
+        \}\
+\
+        .section-header \{\
+            margin-bottom: 4rem;\
+        \}\
+\
+        .section-title \{\
+            font-size: clamp(3rem, 8vw, 6rem);\
+            font-weight: 800;\
+            line-height: 1;\
+            letter-spacing: -0.03em;\
+            margin-bottom: 1rem;\
+        \}\
+\
+        .section-subtitle \{\
+            font-size: 1.3rem;\
+            color: var(--gray);\
+            max-width: 600px;\
+        \}\
+\
+        .projects-grid \{\
+            display: grid;\
+            gap: 2px;\
+            background: var(--dark);\
+            padding: 2px;\
+        \}\
+\
+        .project-card \{\
+            background: var(--light);\
+            padding: 4rem;\
+            transition: all 0.5s ease;\
+            position: relative;\
+            overflow: hidden;\
+        \}\
+\
+        .project-card::before \{\
+            content: '';\
+            position: absolute;\
+            top: 0;\
+            left: -100%;\
+            width: 100%;\
+            height: 100%;\
+            background: linear-gradient(90deg, transparent, rgba(0, 102, 255, 0.1), transparent);\
+            transition: left 0.5s ease;\
+        \}\
+\
+        .project-card:hover::before \{\
+            left: 100%;\
+        \}\
+\
+        .project-card:hover \{\
+            background: white;\
+            transform: scale(1.02);\
+        \}\
+\
+        .project-number \{\
+            font-size: 1rem;\
+            font-weight: 700;\
+            color: var(--primary-blue);\
+            margin-bottom: 1rem;\
+            letter-spacing: 0.1em;\
+        \}\
+\
+        .project-title \{\
+            font-size: clamp(2rem, 4vw, 3.5rem);\
+            font-weight: 800;\
+            margin-bottom: 1.5rem;\
+            letter-spacing: -0.02em;\
+        \}\
+\
+        .project-text \{\
+            font-size: 1.1rem;\
+            color: var(--gray);\
+            line-height: 1.7;\
+            margin-bottom: 1rem;\
+        \}\
+\
+        .project-text.pt \{\
+            font-size: 1rem;\
+            opacity: 0.8;\
+            font-style: italic;\
+        \}\
+\
+        .project-link \{\
+            display: inline-flex;\
+            align-items: center;\
+            gap: 0.5rem;\
+            margin-top: 2rem;\
+            font-size: 1.1rem;\
+            font-weight: 600;\
+            color: var(--dark);\
+            text-decoration: none;\
+            transition: gap 0.3s ease;\
+        \}\
+\
+        .project-link:hover \{\
+            gap: 1rem;\
+        \}\
+\
+        /* Large Text Section */\
+        .large-text-section \{\
+            padding: 8rem 0;\
+            background: var(--dark);\
+            color: white;\
+        \}\
+\
+        .large-text \{\
+            font-size: clamp(2.5rem, 6vw, 5rem);\
+            font-weight: 700;\
+            line-height: 1.2;\
+            letter-spacing: -0.02em;\
+            max-width: 1200px;\
+        \}\
+\
+        .large-text .highlight \{\
+            color: var(--primary-orange);\
+        \}\
+\
+        /* Founder Section */\
+        .founder \{\
+            padding: 8rem 0;\
+            background: white;\
+        \}\
+\
+        .founder-grid \{\
+            display: grid;\
+            grid-template-columns: 1fr 1.5fr;\
+            gap: 6rem;\
+            align-items: start;\
+        \}\
+\
+        .founder-image-wrapper \{\
+            position: sticky;\
+            top: 150px;\
+        \}\
+\
+        .founder-image \{\
+            width: 100%;\
+            aspect-ratio: 3/4;\
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));\
+            border-radius: 20px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-size: 8rem;\
+        \}\
+\
+        .founder-content h2 \{\
+            font-size: clamp(2.5rem, 5vw, 4rem);\
+            font-weight: 800;\
+            margin-bottom: 2rem;\
+            letter-spacing: -0.02em;\
+        \}\
+\
+        .founder-content p \{\
+            font-size: 1.2rem;\
+            line-height: 1.8;\
+            color: var(--gray);\
+            margin-bottom: 2rem;\
+        \}\
+\
+        .founder-content p strong \{\
+            color: var(--dark);\
+        \}\
+\
+        .divider \{\
+            width: 60px;\
+            height: 4px;\
+            background: var(--primary-orange);\
+            margin: 3rem 0;\
+        \}\
+\
+        /* Stats Section */\
+        .stats \{\
+            padding: 6rem 0;\
+            background: var(--primary-blue);\
+            color: white;\
+        \}\
+\
+        .stats-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));\
+            gap: 4rem;\
+        \}\
+\
+        .stat-item h3 \{\
+            font-size: clamp(3rem, 6vw, 5rem);\
+            font-weight: 800;\
+            margin-bottom: 0.5rem;\
+            letter-spacing: -0.02em;\
+        \}\
+\
+        .stat-item p \{\
+            font-size: 1.2rem;\
+            opacity: 0.9;\
+        \}\
+\
+        /* Gallery */\
+        .gallery \{\
+            padding: 8rem 0;\
+        \}\
+\
+        .gallery-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(3, 1fr);\
+            gap: 2px;\
+            background: var(--dark);\
+            padding: 2px;\
+        \}\
+\
+        .gallery-item \{\
+            aspect-ratio: 1;\
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-size: 4rem;\
+            transition: all 0.3s ease;\
+            cursor: pointer;\
+        \}\
+\
+        .gallery-item:nth-child(2) \{\
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-purple));\
+        \}\
+\
+        .gallery-item:nth-child(3) \{\
+            background: linear-gradient(135deg, var(--accent-cyan), var(--primary-blue));\
+        \}\
+\
+        .gallery-item:hover \{\
+            transform: scale(0.95);\
+        \}\
+\
+        /* Quote Section */\
+        .quote-section \{\
+            padding: 8rem 0;\
+            background: white;\
+        \}\
+\
+        .quote-content \{\
+            max-width: 1000px;\
+            margin: 0 auto;\
+        \}\
+\
+        .quote-content blockquote \{\
+            font-size: clamp(2rem, 4vw, 3.5rem);\
+            font-weight: 700;\
+            line-height: 1.3;\
+            letter-spacing: -0.02em;\
+            margin-bottom: 2rem;\
+        \}\
+\
+        .quote-content cite \{\
+            font-size: 1.3rem;\
+            font-style: normal;\
+            color: var(--gray);\
+        \}\
+\
+        /* Partners */\
+        .partners \{\
+            padding: 6rem 0;\
+            background: var(--light);\
+        \}\
+\
+        .partners-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(4, 1fr);\
+            gap: 2rem;\
+            margin-top: 3rem;\
+        \}\
+\
+        .partner-logo \{\
+            aspect-ratio: 16/9;\
+            background: white;\
+            border: 2px solid rgba(0,0,0,0.05);\
+            border-radius: 10px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-size: 3rem;\
+            transition: all 0.3s ease;\
+        \}\
+\
+        .partner-logo:hover \{\
+            border-color: var(--primary-blue);\
+            transform: translateY(-5px);\
+        \}\
+\
+        /* Footer */\
+        footer \{\
+            padding: 6rem 0 3rem;\
+            background: var(--dark);\
+            color: white;\
+        \}\
+\
+        .footer-content \{\
+            display: grid;\
+            grid-template-columns: 2fr 1fr 1fr;\
+            gap: 4rem;\
+            margin-bottom: 4rem;\
+        \}\
+\
+        .footer-brand h3 \{\
+            font-size: 2rem;\
+            font-weight: 800;\
+            margin-bottom: 1rem;\
+        \}\
+\
+        .footer-brand p \{\
+            color: rgba(255,255,255,0.7);\
+            line-height: 1.7;\
+        \}\
+\
+        .footer-links h4 \{\
+            font-size: 1rem;\
+            font-weight: 700;\
+            margin-bottom: 1.5rem;\
+            text-transform: uppercase;\
+            letter-spacing: 0.1em;\
+        \}\
+\
+        .footer-links ul \{\
+            list-style: none;\
+        \}\
+\
+        .footer-links ul li \{\
+            margin-bottom: 1rem;\
+        \}\
+\
+        .footer-links a \{\
+            color: rgba(255,255,255,0.7);\
+            text-decoration: none;\
+            transition: color 0.3s ease;\
+        \}\
+\
+        .footer-links a:hover \{\
+            color: white;\
+        \}\
+\
+        .footer-bottom \{\
+            padding-top: 3rem;\
+            border-top: 1px solid rgba(255,255,255,0.1);\
+            text-align: center;\
+            color: rgba(255,255,255,0.5);\
+        \}\
+\
+        /* Mobile Menu */\
+        .mobile-menu-btn \{\
+            display: none;\
+            background: none;\
+            border: none;\
+            font-size: 1.5rem;\
+            cursor: pointer;\
+            color: var(--dark);\
+        \}\
+\
+        /* Responsive */\
+        @media (max-width: 968px) \{\
+            .container \{\
+                padding: 0 20px;\
+            \}\
+\
+            nav .container \{\
+                padding: 1.5rem 20px;\
+            \}\
+\
+            .nav-links \{\
+                display: none;\
+            \}\
+\
+            .mobile-menu-btn \{\
+                display: block;\
+            \}\
+\
+            .founder-grid \{\
+                grid-template-columns: 1fr;\
+                gap: 3rem;\
+            \}\
+\
+            .founder-image-wrapper \{\
+                position: relative;\
+                top: 0;\
+            \}\
+\
+            .gallery-grid \{\
+                grid-template-columns: 1fr;\
+            \}\
+\
+            .partners-grid \{\
+                grid-template-columns: repeat(2, 1fr);\
+            \}\
+\
+            .footer-content \{\
+                grid-template-columns: 1fr;\
+                gap: 3rem;\
+            \}\
+\
+            .cta-group \{\
+                flex-direction: column;\
+            \}\
+\
+            .cta-button \{\
+                width: 100%;\
+                text-align: center;\
+            \}\
+\
+            .stats-grid \{\
+                grid-template-columns: 1fr;\
+                gap: 2rem;\
+            \}\
+        \}\
+\
+        /* Smooth Scroll */\
+        html \{\
+            scroll-behavior: smooth;\
+        \}\
+\
+        /* Selection */\
+        ::selection \{\
+            background: var(--primary-blue);\
+            color: white;\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <!-- Navigation -->\
+    <nav>\
+        <div class="container">\
+            <div class="logo">Leve</div>\
+            <ul class="nav-links">\
+                <li><a href="#home">Home</a></li>\
+                <li><a href="#projects">Projects</a></li>\
+                <li><a href="#about">About</a></li>\
+                <li><a href="mailto:join@leve.org">Contact</a></li>\
+            </ul>\
+            <button class="mobile-menu-btn">\uc0\u9776 </button>\
+        </div>\
+    </nav>\
+\
+    <!-- Hero Section -->\
+    <section class="hero" id="home">\
+        <div class="container">\
+            <div class="hero-content">\
+                <h1>\
+                    Building<br>\
+                    <span class="gradient-text">Generations,</span><br>\
+                    Building<br>\
+                    Resilience\
+                </h1>\
+                <p class="hero-subtitle">\
+                    Unindo Gera\'e7\'f5es, Construindo Resili\'eancia\
+                </p>\
+                <p class="hero-description">\
+                    A youth-led initiative that tackles food waste and supports an aging population by fostering intergenerational connections and sustainable community practices.\
+                </p>\
+                <div class="cta-group">\
+                    <a href="mailto:join@leve.org?subject=I want to join Leve!" class="cta-button">Join the Movement</a>\
+                    <a href="#projects" class="cta-button secondary">Explore Projects</a>\
+                </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Marquee -->\
+    <div class="marquee">\
+        <div class="marquee-content">\
+            <span>SUSTAINABILITY</span>\
+            <span>\'95</span>\
+            <span>COMMUNITY</span>\
+            <span>\'95</span>\
+            <span>INTERGENERATIONAL</span>\
+            <span>\'95</span>\
+            <span>YOUTH-LED</span>\
+            <span>\'95</span>\
+            <span>SUSTAINABILITY</span>\
+            <span>\'95</span>\
+            <span>COMMUNITY</span>\
+            <span>\'95</span>\
+            <span>INTERGENERATIONAL</span>\
+            <span>\'95</span>\
+            <span>YOUTH-LED</span>\
+            <span>\'95</span>\
+        </div>\
+    </div>\
+\
+    <!-- Projects Section -->\
+    <section class="projects" id="projects">\
+        <div class="container">\
+            <div class="section-header">\
+                <h2 class="section-title">Projects</h2>\
+                <p class="section-subtitle">Innovative initiatives connecting generations and building sustainable communities</p>\
+            </div>\
+            <div class="projects-grid">\
+                <div class="project-card">\
+                    <div class="project-number">01</div>\
+                    <h3 class="project-title">BioRainha</h3>\
+                    <p class="project-text">\
+                        A youth-led campaign that promotes composting, reducing food waste, and building community-wide sustainability.\
+                    </p>\
+                    <p class="project-text pt">\
+                        Uma campanha liderada por jovens que promove a compostagem, reduz o desperd\'edcio de alimentos e constr\'f3i a sustentabilidade em toda a comunidade.\
+                    </p>\
+                    <a href="biorainha.html" class="project-link">Explore Project \uc0\u8594 </a>\
+                </div>\
+\
+                <div class="project-card">\
+                    <div class="project-number">02</div>\
+                    <h3 class="project-title">ArtCaldas</h3>\
+                    <p class="project-text">\
+                        An intergenerational program that connects youth and seniors through volunteering, mentorship, and the sharing of artistic skills.\
+                    </p>\
+                    <p class="project-text pt">\
+                        Um programa intergeracional que conecta jovens e idosos por meio de voluntariado, mentoria e compartilhamento de habilidades art\'edsticas.\
+                    </p>\
+                    <a href="artcaldas.html" class="project-link">Explore Project \uc0\u8594 </a>\
+                </div>\
+\
+                <div class="project-card">\
+                    <div class="project-number">03</div>\
+                    <h3 class="project-title">Me Leve</h3>\
+                    <p class="project-text">\
+                        A community-focused transport system designed to support seniors with mobility challenges through eco-friendly golf carts.\
+                    </p>\
+                    <p class="project-text pt">\
+                        Um sistema de transporte comunit\'e1rio concebido para apoiar seniores com desafios de mobilidade atrav\'e9s de carrinhos de golfe ecol\'f3gicos.\
+                    </p>\
+                    <a href="meleve.html" class="project-link">Explore Project \uc0\u8594 </a>\
+                </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Large Text Section -->\
+    <section class="large-text-section">\
+        <div class="container">\
+            <p class="large-text">\
+                We believe you don't have to carry the weight of the world on your own\'97it's so much <span class="highlight">easier when you've got a community</span> by your side.\
+            </p>\
+        </div>\
+    </section>\
+\
+    <!-- Stats Section -->\
+    <section class="stats">\
+        <div class="container">\
+            <div class="stats-grid">\
+                <div class="stat-item">\
+                    <h3>134+</h3>\
+                    <p>Students Reached</p>\
+                </div>\
+                <div class="stat-item">\
+                    <h3>8</h3>\
+                    <p>Schools Engaged</p>\
+                </div>\
+                <div class="stat-item">\
+                    <h3>14</h3>\
+                    <p>Campaigns Launched</p>\
+                </div>\
+                <div class="stat-item">\
+                    <h3>9+</h3>\
+                    <p>Community Cleanups</p>\
+                </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Founder Section -->\
+    <section class="founder" id="about">\
+        <div class="container">\
+            <div class="founder-grid">\
+                <div class="founder-image-wrapper">\
+                    <div class="founder-image">\uc0\u55357 \u56420 </div>\
+                </div>\
+                <div class="founder-content">\
+                    <h2>Meet Aditya</h2>\
+                    <p>\
+                        <strong>Hi! I'm Aditya, the founder of Leve.</strong> Our mission is simple: to help young people, like you and me, build resilience and learn how to deal with life's ups and downs.\
+                    </p>\
+                    <p>\
+                        It all started in a small town in Portugal, where I realized that many of us need a safe space to talk, share, and grow together. At Leve, we believe you don't have to carry the weight of the world on your own\'97it's so much easier when you've got a community by your side.\
+                    </p>\
+                    <p>\
+                        We want to create moments to connect, activities that make us feel good, and, above all, show that it's totally okay to ask for help. Being strong doesn't mean having no problems\'97it means having the courage to face them, step by step.\
+                    </p>\
+                    <div class="divider"></div>\
+                    <p style="font-style: italic; opacity: 0.8;">\
+                        <strong>Ol\'e1! Eu sou o Aditya, o fundador da Leve.</strong> A nossa miss\'e3o \'e9 simples mas muito importante: ajudar jovens como eu e tu a ganhar mais resili\'eancia e aprender a lidar com os altos e baixos da vida.\
+                    </p>\
+                </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Gallery -->\
+    <section class="gallery">\
+        <div class="container">\
+            <h2 class="section-title">Impact</h2>\
+            <div class="gallery-grid">\
+                <div class="gallery-item">\uc0\u55357 \u56568 </div>\
+                <div class="gallery-item">\uc0\u55356 \u57101 </div>\
+                <div class="gallery-item">\uc0\u55358 \u56605 </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Quote Section -->\
+    <section class="quote-section">\
+        <div class="container">\
+            <div class="quote-content">\
+                <blockquote>\
+                    "Do your little bit of good where you are; it's those little bits of good put together that overwhelm the world."\
+                </blockquote>\
+                <cite>\'97 Desmond Tutu</cite>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Partners -->\
+    <section class="partners">\
+        <div class="container">\
+            <h2 class="section-title">Partners</h2>\
+            <div class="partners-grid">\
+                <div class="partner-logo">\uc0\u55356 \u57307 \u65039 </div>\
+                <div class="partner-logo">\uc0\u55356 \u57139 </div>\
+                <div class="partner-logo">\uc0\u55356 \u57323 </div>\
+                <div class="partner-logo">\uc0\u55358 \u56605 </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <!-- Footer -->\
+    <footer>\
+        <div class="container">\
+            <div class="footer-content">\
+                <div class="footer-brand">\
+                    <h3>Leve</h3>\
+                    <p>Building generations, building resilience through youth-led sustainable community initiatives in Caldas da Rainha, Portugal.</p>\
+                </div>\
+                <div class="footer-links">\
+                    <h4>Projects</h4>\
+                    <ul>\
+                        <li><a href="biorainha.html">BioRainha</a></li>\
+                        <li><a href="artcaldas.html">ArtCaldas</a></li>\
+                        <li><a href="meleve.html">Me Leve</a></li>\
+                    </ul>\
+                </div>\
+                <div class="footer-links">\
+                    <h4>Connect</h4>\
+                    <ul>\
+                        <li><a href="mailto:join@leve.org">Email Us</a></li>\
+                        <li><a href="mailto:join@leve.org?subject=I want to join Leve!">Join Us</a></li>\
+                    </ul>\
+                </div>\
+            </div>\
+            <div class="footer-bottom">\
+                <p>\'a9 2023, Aditya Banerjee, All rights reserved</p>\
+            </div>\
+        </div>\
+    </footer>\
+\
+    <script>\
+        // Mobile menu toggle\
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() \{\
+            const navLinks = document.querySelector('.nav-links');\
+            if (navLinks.style.display === 'flex') \{\
+                navLinks.style.display = 'none';\
+            \} else \{\
+                navLinks.style.display = 'flex';\
+                navLinks.style.flexDirection = 'column';\
+                navLinks.style.position = 'absolute';\
+                navLinks.style.top = '100%';\
+                navLinks.style.left = '0';\
+                navLinks.style.right = '0';\
+                navLinks.style.background = 'white';\
+                navLinks.style.padding = '2rem';\
+                navLinks.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';\
+            \}\
+        \});\
+\
+        // Smooth scroll\
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => \{\
+            anchor.addEventListener('click', function (e) \{\
+                e.preventDefault();\
+                const target = document.querySelector(this.getAttribute('href'));\
+                if (target) \{\
+                    target.scrollIntoView(\{ behavior: 'smooth', block: 'start' \});\
+                \}\
+            \});\
+        \});\
+    </script>\
+</body>\
+</html>}
